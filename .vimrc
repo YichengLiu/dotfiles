@@ -47,7 +47,8 @@ Bundle 'Lokaltog/vim-easymotion'
 filetype plugin indent on
 
 let NERDSpaceDelims=1
-nmap <C-/> :NERDComToggleComment<cr>
+" nmap <C-_> :NERDComToggleComment<cr>
+nmap <C-_> <leader>cc
 let NERDCompactSexyComs=1
 
 " nerdTree
