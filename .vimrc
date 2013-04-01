@@ -17,7 +17,6 @@ nmap <C-DOWN> <C-W>-
 nmap <C-RIGHT> <C-W>>
 nmap <C-LEFT> <C-W><
 set t_Co=256
-colorscheme molokai
 set nowrap
 
 set nocompatible
@@ -43,8 +42,11 @@ Bundle 'Townk/vim-autoclose'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'YichengLiu/molokai'
 
 filetype plugin indent on
+
+colorscheme molokai
 
 let NERDSpaceDelims=1
 " nmap <C-_> :NERDComToggleComment<cr>
