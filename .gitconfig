@@ -1,0 +1,11 @@
+[user]
+    email = liuchen250.student@gmail.com
+    name = Yicheng Liu
+[alias]
+    b = branch
+    cm = commit -m
+    co = checkout
+    st = status
+[color]
+	diff = auto
+	status = auto
