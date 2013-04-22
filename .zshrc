@@ -36,6 +36,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+export GOPATH=$HOME/Code/Go
+export PATH=$GOPATH/bin:$PATH
+
 alias ls='ls --color=auto'
 alias ll='ls -la'
 #alias vmmod='sudo modprobe vboxdrv'
