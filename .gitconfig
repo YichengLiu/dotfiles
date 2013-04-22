@@ -7,5 +7,5 @@
     co = checkout
     st = status
 [color]
-	diff = auto
-	status = auto
+    diff = auto
+    status = auto
