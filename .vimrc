@@ -78,3 +78,7 @@ set completeopt-=preview "let eclim do not show the preview window when complete
 let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabRetainCompletionType = 2
 let g:SuperTabDefaultCompletionType = "<C-X><C-U>"
+" Octave syntax
+augroup filetypedetect
+    au! BufRead,BufNewFile *.oct set filetype=octave
+augroup END
