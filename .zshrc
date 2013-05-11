@@ -48,10 +48,3 @@ alias eclimd='/usr/share/eclipse/eclimd >/dev/null &'
 alias gnome='sudo systemctl start gdm.service'
 alias sc='sudo systemctl'
 alias q='cd ..'
-
-#export GTK_IM_MODULE=ibus
-#export XMODIFIERS=@im=ibus
-#export QT_IM_MODULE=ibus
-set | grep --binary-files=text DBUS_SESSION_BUS_ADDRESS > ~/.DBUS_temp
-
-hash -d Service='/usr/lib/systemd/system/'
