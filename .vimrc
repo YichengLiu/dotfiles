@@ -35,7 +35,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bufexplorer.zip'
-Bundle 'SirVer/ultisnips'
+" Bundle 'SirVer/ultisnips'
 Bundle 'humiaozuzu/fcitx-status'
 Bundle 'Townk/vim-autoclose'
 " Bundle 'jiangmiao/auto-pairs'
@@ -43,6 +43,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'YichengLiu/molokai'
+Bundle 'Valloric/YouCompleteMe'
 
 filetype plugin indent on
 
