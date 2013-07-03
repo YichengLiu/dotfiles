@@ -5,9 +5,8 @@ set ts=4
 set sw=4
 set et
 nmap <F7> <ESC>:Tlist<RETURN>
-nmap <C-F5> <ESC>:ConqueTermSplit bash<RETURN><ESC>:resize 10<RETURN>i
+" nmap <C-F5> <ESC>:ConqueTermSplit bash<RETURN><ESC>:resize 10<RETURN>i
 nmap <C-E><C-I> <ESC>:JavaImport<RETURN>
-nmap <F3> <ESC>\be
 nmap <C-K> <C-W><C-K>
 nmap <C-J> <C-W><C-J>
 nmap <C-H> <C-W><C-H>
@@ -28,13 +27,13 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'dhazel/conque-term'
-"Bundle 'CSApprox'
+" Bundle 'dhazel/conque-term'
+" Bundle 'CSApprox'
 Bundle 'taglist.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
+" Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
-Bundle 'bufexplorer.zip'
+" Bundle 'bufexplorer.zip'
 " Bundle 'SirVer/ultisnips'
 Bundle 'humiaozuzu/fcitx-status'
 Bundle 'Townk/vim-autoclose'
@@ -44,13 +43,14 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'YichengLiu/molokai'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on
 
 colorscheme molokai
 
+" nerdCommenter
 let NERDSpaceDelims=1
-" nmap <C-_> :NERDComToggleComment<cr>
 nmap <C-_> <leader>cc
 let NERDCompactSexyComs=1
 
@@ -76,10 +76,15 @@ let Tlist_Use_Right_Window = 1
 set completeopt-=preview "let eclim do not show the preview window when complete
 
 " superTab
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabRetainCompletionType = 2
-autocmd FileType * if &ft != 'java' | let g:SuperTabDefaultCompletionType = "<C-X><C-O>" | else | g:SuperTabDefaultCompletionType = "<C-X><C-U>" | endif
+" autocmd FileType * if &ft != 'java' | let g:SuperTabDefaultCompletionType = "<C-X><C-O>" | else | g:SuperTabDefaultCompletionType = "<C-X><C-U>" | endif
+
 " Octave syntax
 augroup filetypedetect
     au! BufRead,BufNewFile *.oct set filetype=octave
 augroup END
+
+" ctrlp.vim
+let g:ctrlp_map = '<C-n>'
+nmap <C-P> <ESC>:CtrlPBuffer<RETURN>
