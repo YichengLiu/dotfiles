@@ -1,5 +1,6 @@
 syntax on
 set cindent
+set nu
 set rnu
 set ts=4
 set sw=4
@@ -74,6 +75,7 @@ let Tlist_Use_Right_Window = 1
 
 " eclim
 set completeopt-=preview "let eclim do not show the preview window when complete
+let g:EclimCompletionMethod = 'omnifunc'
 
 " superTab
 " let g:SuperTabDefaultCompletionType = "context"

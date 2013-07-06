@@ -35,16 +35,12 @@ plugins=(git autojump history-substring-search)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-#export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
 export GOPATH=$HOME/Code/Go
 export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/Programs/android-sdk/platform-tools:$PATH
 
 alias ls='ls --color=auto'
 alias ll='ls -la'
-#alias vmmod='sudo modprobe vboxdrv'
-#alias winxp='VBoxManage startvm "WinXP"'
-#alias ssh213='ssh lyc@192.168.201.213'
-alias eclimd='/usr/share/eclipse/eclimd >/dev/null &'
 alias gnome='sudo systemctl start gdm.service'
 alias sc='sudo systemctl'
 alias q='cd ..'

@@ -63,6 +63,7 @@ ${font Zegoe UI:size=12}${color #ffd800}SYSTEM ${hr 2}
 ${font Zegoe UI:size=10}${color #ffffff}Kernel: ${alignr}${kernel}
 Uptime: ${alignr}$uptime_short
 Temp: ${alignr}${acpitemp}°C
+Fan: ${alignr}${ibm_fan} RPM
 Core 1:  ${cpu cpu1}% $alignr ${freq_g (1)} GHz
 Core 2:  ${cpu cpu2}% $alignr ${freq_g (2)} GHz
 
