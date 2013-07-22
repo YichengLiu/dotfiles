@@ -27,7 +27,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/vim-powerline.git'
+" Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'bling/vim-airline'
 " Bundle 'dhazel/conque-term'
 " Bundle 'CSApprox'
 Bundle 'taglist.vim'
@@ -67,8 +68,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " powerline
-set laststatus=2
-let g:Powerline_symbols = 'fancy'
+" set laststatus=2
+" let g:Powerline_symbols = 'fancy'
 
 " taglist
 let Tlist_Use_Right_Window = 1
@@ -90,3 +91,8 @@ augroup END
 " ctrlp.vim
 let g:ctrlp_map = '<C-n>'
 nmap <C-P> <ESC>:CtrlPBuffer<RETURN>
+
+" airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
