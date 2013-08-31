@@ -6,7 +6,6 @@ set ts=4
 set sw=4
 set et
 nmap <F7> <ESC>:Tlist<RETURN>
-" nmap <C-F5> <ESC>:ConqueTermSplit bash<RETURN><ESC>:resize 10<RETURN>i
 nmap <C-E><C-I> <ESC>:JavaImport<RETURN>
 nmap <C-K> <C-W><C-K>
 nmap <C-J> <C-W><C-J>
@@ -27,19 +26,12 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-" Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'bling/vim-airline'
-" Bundle 'dhazel/conque-term'
-" Bundle 'CSApprox'
+Bundle 'itchyny/lightline.vim'
 Bundle 'taglist.vim'
 Bundle 'scrooloose/nerdtree'
-" Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
-" Bundle 'bufexplorer.zip'
-" Bundle 'SirVer/ultisnips'
 Bundle 'humiaozuzu/fcitx-status'
 Bundle 'Townk/vim-autoclose'
-" Bundle 'jiangmiao/auto-pairs'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
@@ -67,10 +59,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" powerline
-" set laststatus=2
-" let g:Powerline_symbols = 'fancy'
-
 " taglist
 let Tlist_Use_Right_Window = 1
 
@@ -78,21 +66,65 @@ let Tlist_Use_Right_Window = 1
 set completeopt-=preview "let eclim do not show the preview window when complete
 let g:EclimCompletionMethod = 'omnifunc'
 
-" superTab
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabRetainCompletionType = 2
-" autocmd FileType * if &ft != 'java' | let g:SuperTabDefaultCompletionType = "<C-X><C-O>" | else | g:SuperTabDefaultCompletionType = "<C-X><C-U>" | endif
-
 " Octave syntax
 augroup filetypedetect
     au! BufRead,BufNewFile *.oct set filetype=octave
 augroup END
 
-" ctrlp.vim
-let g:ctrlp_map = '<C-n>'
-nmap <C-P> <ESC>:CtrlPBuffer<RETURN>
-
-" airline
+" lightline
 set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ], [ 'ctrlpmark' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'FugitiveHead',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+function! FugitiveHead()
+  try
+    if exists("*fugitive#head")
+      let branch = fugitive#head()
+      return strlen(branch) ? ' '.branch : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
