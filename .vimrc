@@ -38,6 +38,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'YichengLiu/molokai'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 filetype plugin indent on
 
@@ -70,6 +71,10 @@ let g:EclimCompletionMethod = 'omnifunc'
 augroup filetypedetect
     au! BufRead,BufNewFile *.oct set filetype=octave
 augroup END
+
+" indent guides
+let g:indent_guides_guide_size=1
+let g:indent_guides_start_level=2
 
 " lightline
 set laststatus=2
