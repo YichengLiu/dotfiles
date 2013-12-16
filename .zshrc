@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="af-magic"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="af-magic"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -30,7 +30,7 @@ ZSH_THEME="af-magic"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump history-substring-search)
+plugins=(git git-flow autojump history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,3 +44,5 @@ alias ll='ls -la'
 alias gnome='sudo systemctl start gdm.service'
 alias sc='sudo systemctl'
 alias q='cd ..'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
