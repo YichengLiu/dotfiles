@@ -17,6 +17,7 @@ nmap <C-RIGHT> <C-W>>
 nmap <C-LEFT> <C-W><
 set t_Co=256
 set nowrap
+set backspace=2
 
 set nocompatible
 filetype off
@@ -30,7 +31,6 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'taglist.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'humiaozuzu/fcitx-status'
 Bundle 'Townk/vim-autoclose'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
@@ -43,6 +43,12 @@ Bundle 'nathanaelkane/vim-indent-guides'
 filetype plugin indent on
 
 colorscheme molokai
+
+" vim-easymotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
 " nerdCommenter
 let NERDSpaceDelims=1
@@ -92,8 +98,6 @@ let g:lightline = {
       \   'fugitive': 'FugitiveHead',
       \   'ctrlpmark': 'CtrlPMark',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
 function! FugitiveHead()
