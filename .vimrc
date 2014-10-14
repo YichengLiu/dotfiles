@@ -13,8 +13,8 @@ nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 nmap <C-UP> <C-W>+
 nmap <C-DOWN> <C-W>-
-nmap <C-RIGHT> <C-W>>
-nmap <C-LEFT> <C-W><
+nmap <D-RIGHT> <C-W>>
+nmap <D-LEFT> <C-W><
 set t_Co=256
 set nowrap
 set backspace=2
@@ -36,7 +36,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'YichengLiu/molokai'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 
@@ -104,7 +104,7 @@ function! FugitiveHead()
   try
     if exists("*fugitive#head")
       let branch = fugitive#head()
-      return strlen(branch) ? ' '.branch : ''
+      return strlen(branch) ? branch : ''
     endif
   catch
   endtry
