@@ -30,21 +30,28 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow autojump history-substring-search mvn)
+plugins=(git git-flow autojump history-substring-search mvn brew)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export GOPATH=$HOME/Code/Go
+export PATH=/usr/local/sbin:$PATH
+export PATH=/Users/gods/Programs/casperjs/bin:$PATH
+export PATH=/Applications/TextMate.app/Contents/Resources/:$PATH
+export GOPATH=$HOME/Go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/Programs/android-sdk/platform-tools:$PATH
 
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias ll='ls -la'
 alias gnome='sudo systemctl start gdm.service'
 alias sc='sudo systemctl'
 alias q='cd ..'
+alias vim='mvim -v'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias te='trs'
 alias tc='trs {=zh}'
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
