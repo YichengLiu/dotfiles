@@ -39,7 +39,6 @@ export PATH=/Users/gods/Programs/casperjs/bin:$PATH
 export PATH=/Applications/TextMate.app/Contents/Resources/:$PATH
 export GOPATH=$HOME/Go
 export PATH=$GOPATH/bin:$PATH
-export PATH=$HOME/Programs/android-sdk/platform-tools:$PATH
 
 # alias ls='ls --color=auto'
 alias ll='ls -la'
@@ -51,8 +50,6 @@ alias fuck='$(thefuck $(fc -ln -1))'
 alias ack='ag'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-alias te='trs'
-alias tc='trs {=zh}'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
