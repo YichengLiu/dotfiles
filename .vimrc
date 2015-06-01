@@ -5,8 +5,6 @@ set rnu
 set ts=4
 set sw=4
 set et
-nmap <F7> <ESC>:Tlist<RETURN>
-nmap <C-E><C-I> <ESC>:JavaImport<RETURN>
 nmap <C-K> <C-W><C-K>
 nmap <C-J> <C-W><C-J>
 nmap <C-H> <C-W><C-H>
@@ -36,7 +34,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'YichengLiu/molokai'
-" Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 

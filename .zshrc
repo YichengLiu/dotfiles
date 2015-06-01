@@ -6,7 +6,6 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-#ZSH_THEME="af-magic"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -30,7 +29,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow autojump history-substring-search mvn brew)
+plugins=(git git-flow autojump history-substring-search mvn brew django web-search rails ruby rvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,10 +43,12 @@ export PATH=$HOME/Programs/android-sdk/platform-tools:$PATH
 
 # alias ls='ls --color=auto'
 alias ll='ls -la'
-alias gnome='sudo systemctl start gdm.service'
 alias sc='sudo systemctl'
 alias q='cd ..'
 alias vim='mvim -v'
+alias top='sudo htop'
+alias fuck='$(thefuck $(fc -ln -1))'
+alias ack='ag'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias te='trs'
@@ -55,3 +56,22 @@ alias tc='trs {=zh}'
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export EDITOR=vim
+
+# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+export COCOS_CONSOLE_ROOT=/Users/gods/Code/cocos2d-x-3.3/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
+
+# Add environment variable COCOS_X_ROOT for cocos2d-x
+export COCOS_X_ROOT=/Users/gods/Code/cocos2d-x-3.3
+export PATH=$COCOS_X_ROOT:$PATH
+
+# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
+export COCOS_TEMPLATES_ROOT=/Users/gods/Code/cocos2d-x-3.3/templates
+export PATH=$COCOS_TEMPLATES_ROOT:$PATH
+
+# Add environment variable ANT_ROOT for cocos2d-x
+export ANT_ROOT=/usr/local/Cellar/ant/1.9.4/libexec/bin
+export PATH=$ANT_ROOT:$PATH
+
+export JAVA_HOME=$(/usr/libexec/java_home)
