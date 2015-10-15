@@ -21,10 +21,10 @@ set nocompatible
 filetype off
 
 "Vundle Settings
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 Bundle 'itchyny/lightline.vim'
 Bundle 'taglist.vim'
 Bundle 'scrooloose/nerdtree'
@@ -38,6 +38,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 
+call vundle#end()
 filetype plugin indent on
 
 colorscheme molokai
@@ -67,10 +68,6 @@ autocmd BufWinLeave * call clearmatches()
 " taglist
 let Tlist_Use_Right_Window = 1
 
-" eclim
-set completeopt-=preview "let eclim do not show the preview window when complete
-let g:EclimCompletionMethod = 'omnifunc'
-
 " Octave syntax
 augroup filetypedetect
     au! BufRead,BufNewFile *.oct set filetype=octave
@@ -89,7 +86,7 @@ let g:lightline = {
       \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \ },
       \ 'component_function': {
