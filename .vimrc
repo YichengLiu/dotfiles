@@ -16,6 +16,7 @@ nmap <D-LEFT> <C-W><
 set t_Co=256
 set nowrap
 set backspace=2
+set guifont=Monaco:h14
 
 set nocompatible
 filetype off
@@ -132,3 +133,5 @@ endfunction
 function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
+
+let g:ctrlp_show_hidden = 1
