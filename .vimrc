@@ -1,7 +1,6 @@
 syntax on
 set cindent
 set nu
-set rnu
 set ts=4
 set sw=4
 set et
@@ -34,15 +33,22 @@ Bundle 'Townk/vim-autoclose'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'YichengLiu/molokai'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'mileszs/ack.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'fatih/vim-go'
+
+"Color scheme
+Bundle 'YichengLiu/molokai'
+Bundle 'morhetz/gruvbox'
+Bundle 'altercation/vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
 
-colorscheme molokai
+colorscheme gruvbox
 
 " vim-easymotion
 map  / <Plug>(easymotion-sn)
@@ -56,7 +62,10 @@ nmap <C-_> <leader>cc
 let NERDCompactSexyComs=1
 
 " nerdTree
-nmap <F6> <ESC>:NERDTreeToggle<RETURN><C-L>
+nmap <F6> :NERDTreeToggle<RETURN>
+
+" Ack
+nmap <C-S-F> :Ack 
 
 " highlight unnecessary whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -81,7 +90,7 @@ let g:indent_guides_start_level=2
 " lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ], [ 'ctrlpmark' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -135,3 +144,4 @@ function! CtrlPStatusFunc_2(str)
 endfunction
 
 let g:ctrlp_show_hidden = 1
+let g:ackprg = 'ag --vimgrep'
