@@ -39,6 +39,8 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Plugin 'mileszs/ack.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'fatih/vim-go'
+Plugin 'elzr/vim-json'
+Plugin 'majutsushi/tagbar'
 
 "Color scheme
 Bundle 'YichengLiu/molokai'
@@ -61,11 +63,20 @@ let NERDSpaceDelims=1
 nmap <C-_> <leader>cc
 let NERDCompactSexyComs=1
 
+" vim-autoclose
+let g:AutoCloseExpandEnterOn = "{"
+
 " nerdTree
 nmap <F6> :NERDTreeToggle<RETURN>
 
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Ack
-nmap <C-S-F> :Ack 
+nmap <C-S-F> :Ack
+
+" Json View
+nmap =j :%!python -m json.tool<CR>
 
 " highlight unnecessary whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
