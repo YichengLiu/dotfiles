@@ -36,11 +36,12 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'fatih/vim-go'
 Plugin 'elzr/vim-json'
 Plugin 'majutsushi/tagbar'
+Plugin 'wellle/targets.vim'
 
 "Color scheme
 Bundle 'YichengLiu/molokai'
@@ -155,4 +156,3 @@ function! CtrlPStatusFunc_2(str)
 endfunction
 
 let g:ctrlp_show_hidden = 1
-let g:ackprg = 'ag --vimgrep'
