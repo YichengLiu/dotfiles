@@ -15,7 +15,7 @@ nmap <D-LEFT> <C-W><
 set t_Co=256
 set nowrap
 set backspace=2
-set guifont=Monaco:h14
+set guifont=Monaco\ for\ Powerline:h14
 
 set nocompatible
 filetype off
@@ -26,22 +26,26 @@ call vundle#begin()
 
 Bundle 'VundleVim/Vundle.vim'
 Bundle 'itchyny/lightline.vim'
-Bundle 'taglist.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-fugitive'
 Bundle 'Townk/vim-autoclose'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'fatih/vim-go'
 Plugin 'elzr/vim-json'
-Plugin 'majutsushi/tagbar'
 Plugin 'wellle/targets.vim'
+Plugin 'mhinz/vim-startify'
+
+"Code
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'taglist.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
 
 "Color scheme
 Bundle 'YichengLiu/molokai'
@@ -110,21 +114,19 @@ let g:lightline = {
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
       \ },
       \ 'component_function': {
-      \   'fugitive': 'FugitiveHead',
+      \   'fugitive': 'LightLineFugitive',
       \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ }
 
-function! FugitiveHead()
-  try
-    if exists("*fugitive#head")
-      let branch = fugitive#head()
-      return strlen(branch) ? branch : ''
-    endif
-  catch
-  endtry
+function! LightLineFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? ' '._ : ''
+  endif
   return ''
 endfunction
 
@@ -156,3 +158,17 @@ function! CtrlPStatusFunc_2(str)
 endfunction
 
 let g:ctrlp_show_hidden = 1
+
+"startify
+let g:startify_custom_header =
+      \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
