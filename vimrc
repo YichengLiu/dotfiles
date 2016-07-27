@@ -51,11 +51,12 @@ Plugin 'majutsushi/tagbar'
 Bundle 'YichengLiu/molokai'
 Bundle 'morhetz/gruvbox'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on
 
-colorscheme gruvbox
+colorscheme base16-ocean
 
 " vim-easymotion
 map  / <Plug>(easymotion-sn)
@@ -106,7 +107,7 @@ let g:indent_guides_start_level=2
 " lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'solarized_dark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ], [ 'ctrlpmark' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
