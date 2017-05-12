@@ -4,58 +4,69 @@ set nu
 set ts=4
 set sw=4
 set et
+set backspace=2
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 nmap <C-K> <C-W><C-K>
 nmap <C-J> <C-W><C-J>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
-nmap <C-UP> <C-W>+
-nmap <C-DOWN> <C-W>-
-nmap <D-RIGHT> <C-W>>
-nmap <D-LEFT> <C-W><
-set t_Co=256
-set nowrap
-set backspace=2
-set guifont=Monaco\ for\ Powerline:h14
+:set mouse=a
 
-set nocompatible
-filetype off
+" Plugin options
+call plug#begin('~/.vim/plugged')
 
-"Vundle Settings
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Bundle 'VundleVim/Vundle.vim'
-Bundle 'itchyny/lightline.vim'
-Bundle 'Townk/vim-autoclose'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Plugin 'rking/ag.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'elzr/vim-json'
-Plugin 'wellle/targets.vim'
-Plugin 'mhinz/vim-startify'
+"General
+Plug 'itchyny/lightline.vim'
+Plug 'Townk/vim-autoclose'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'wellle/targets.vim'
+Plug 'mhinz/vim-startify'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'yuttie/comfortable-motion.vim'
+"Plug 'hsanson/vim-android'
 
 "Code
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'taglist.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+
+"Language
+Plug 'sheerun/vim-polyglot'
 
 "Color scheme
-Bundle 'YichengLiu/molokai'
-Bundle 'morhetz/gruvbox'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
+Plug 'rakr/vim-one'
 
-call vundle#end()
-filetype plugin indent on
+" Add plugins to &runtimepath
+call plug#end()
 
+au BufNewFile,BufRead *.mpd set filetype=xml
+au BufNewFile,BufRead Jenkinsfile set filetype=groovy
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+set background=dark
+let base16colorspace=256
 colorscheme base16-ocean
 
 " vim-easymotion
@@ -75,12 +86,6 @@ let g:AutoCloseExpandEnterOn = "{"
 " nerdTree
 nmap <F6> :NERDTreeToggle<RETURN>
 
-" Tagbar
-nmap <F8> :TagbarToggle<CR>
-
-" Ack
-nmap <C-S-F> :Ack
-
 " Json View
 nmap =j :%!python -m json.tool<CR>
 
@@ -92,22 +97,10 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" taglist
-let Tlist_Use_Right_Window = 1
-
-" Octave syntax
-augroup filetypedetect
-    au! BufRead,BufNewFile *.oct set filetype=octave
-augroup END
-
-" indent guides
-let g:indent_guides_guide_size=1
-let g:indent_guides_start_level=2
-
 " lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized_dark',
+      \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ], [ 'ctrlpmark' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -164,12 +157,19 @@ let g:ctrlp_show_hidden = 1
 let g:startify_custom_header =
       \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
 
-"Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+nnoremap <buffer> <F9> :exec '!python3' shellescape(@%, 1)<cr>
 
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"Ack -> Ag
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+"Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+"Android
+let g:android_sdk_path = '/Users/yicheng.liu/Library/Android/sdk'
