@@ -49,15 +49,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(adb autojump brew cp git git-flow gitignore golang history-substring-search jira thefuck virtualenvwrapper)
+plugins=(adb autojump brew brew-cask cp git gitignore git-open golang history-substring-search jira thefuck tig virtualenvwrapper web-search)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/Library/Android/sdk/tools
 export PATH=$PATH:$HOME/Library/Android/sdk/tools/proguard/bin
-export PATH=$PATH:$HOME/Library/Android/android-ndk-r11c
+export PATH=$PATH:$HOME/Library/Android/android-ndk-r13b
 export PATH=$PATH:$HOME/Programs/Arcanist/arcanist/bin:$HOME/Programs/Bento4/bin:$HOME/Programs/Bento4/utils:$HOME/Programs/bin
 export PATH=$PATH:$HOME/.rvm/bin
 export PATH=$PATH:$HOME/Code/AndroidHelper
@@ -65,7 +65,7 @@ export PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin
 
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
-export EDITOR='nvim'
+export EDITOR='vim'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,11 +95,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -la'
 alias q='cd ..'
-alias vim='nvim'
+# alias vim='mvim -v'
 alias top='sudo htop'
 alias ack='ag'
 alias tc='trans :zh'
-alias te='trans :en'
+alias te='trans zh:en'
+alias p4merge='/Applications/p4merge.app/Contents/MacOS/p4merge'
 
 source /usr/local/bin/virtualenvwrapper.sh
 source ~/.rvm/scripts/rvm
@@ -122,3 +123,10 @@ fi
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-ocean.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# Run kotlin as script
+function kt () {
+    kotlinc $1 -include-runtime -d hello.jar
+    java -jar hello.jar
+    rm hello.jar
+}
